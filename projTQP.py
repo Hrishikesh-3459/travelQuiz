@@ -54,6 +54,12 @@ for k in range(0,len(ques)):
     city[int(ans) - 1].inc_vote()
     print(" ")
 #there is a problem here
+votes = []
+for i in city:
+    votes.append(i.vote)
+x = max(votes)
+i = votes.index(x)
+print(city[i].name)
 
 
 
@@ -63,12 +69,7 @@ for k in range(0,len(ques)):
 # city[int(ans) - 1].inc_vote()
 #print(city[0].vote)
 #print(city[1].vote)
-votes = []
-for i in city:
-    votes.append(i.vote)
-x = max(votes)
-i = votes.index(x)
-print(city[i].name)
+
 # print(max(votes))
 
 # ques.append(Questions(q[1], [city[1].natural, city[7].natural,city[7].natural]))
