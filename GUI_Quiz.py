@@ -1,9 +1,7 @@
 from tkinter import Tk, Frame, Label, Button 
 from time import sleep
-goa=0
-delhi=0
-jaipur=0
-c=[goa,delhi,jaipur]
+
+
 class Question:
     def __init__(self, question, answers, correctLetter):
         self.question = question
@@ -43,7 +41,7 @@ def askQuestion():
     questions[index].getView(window).pack()
 
 questions = []
-file = open("questions.txt", "r")
+file = open("GUI_Questions.txt", "r")
 line = file.readline()
 while(line != ""):
     questionString = line
