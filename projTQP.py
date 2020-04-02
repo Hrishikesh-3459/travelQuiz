@@ -1,4 +1,5 @@
 import csv
+from PIL import Image
 
 class Questions:
     def __init__(self, question_str, options):
@@ -30,7 +31,7 @@ class Cities:
 
 filename = './cities.csv'
 
-with open(filename, newline='', encoding='utf-8') as f:
+with open(filename) as f:
     reader = csv.reader(f)
     text = list(reader)
 
@@ -61,27 +62,8 @@ x = max(votes)
 i = votes.index(x)
 print(city[i].name)
 
+# pip install Pillow
 
-
-
-
-# ans = ques[1].get_option()
-# city[int(ans) - 1].inc_vote()
-#print(city[0].vote)
-#print(city[1].vote)
-
-# print(max(votes))
-
-# ques.append(Questions(q[1], [city[1].natural, city[7].natural,city[7].natural]))
-# ques.append(Questions(q[2], city[7].natural))
-# ques.append(Questions(q[3], city[7].natural))
-#     ans = []
-#     ans.append(city)
-#     print(que)
-#     print(city[0].natural)
-#     print(city[1].natural)
-#     # print(city[2].natural)
-#     # print(city[3].natural)
-#     ans = input()
-#     if(ans == ):
+myImage = Image.open("./img.png")
+myImage.show()
 
