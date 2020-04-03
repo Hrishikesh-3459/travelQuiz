@@ -1,4 +1,3 @@
-
 from tkinter import *
 from time import sleep
 import csv
@@ -37,7 +36,7 @@ class Cities:
     def inc_vote(self):
         self.vote += 1
         la = Label(root, text = self.details[DETAILS[0]]).pack()
-        #frame.pack_forget()
+         #frame.pack_forget()
         
         askQue()
         #frame.after(1000, lambda *args: frame.pack_forget())
@@ -73,8 +72,8 @@ class Questions:
 
 def askQue():
     global q,frame, index, button
-    #if(len(ques) == index + 1):
-    if(len(q) == index + 1):
+    if(len(ques) == index + 1):
+    # if(index == 2):
         la = Label(root, text = "The End").pack()
         answer()
         return
@@ -137,11 +136,4 @@ button = Button(root, text="Start", command=askQue).pack()
 # x = max(votes)
 # i = votes.index(x)
 # print(city[i].details[DETAILS[0]])
-scroll = Scrollbar(root) 
-scroll.pack( side = RIGHT, fill = Y )
-mylist = Listbox(root, yscrollcommand = scroll.set)
-for i in range(0,100):
-    mylist.insert(END, i)
-mylist.pack()
-scroll.config(command = mylist.yview)
 root.mainloop()
