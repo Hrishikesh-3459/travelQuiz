@@ -1,6 +1,14 @@
 
 from tkinter import *
+from time import sleep
 import csv
+
+
+# def d(view):
+#         view.pack_forget()
+
+
+
 DETAILS = ['name', 'natural', 'food', 'intent', 'man_made', 'dress', 'drink', 'climate', 'activity']
 class Cities:
     def __init__(self, name, natural, man_made, intent, food, dress, drink, climate, activity):
@@ -24,17 +32,72 @@ class Cities:
         # self.climate = climate
         # self.activity = activity 
         self.vote = 0
+
     
     def inc_vote(self):
         self.vote += 1
-        frame.pack_forget()
-        butto_1 = Button(root, text = self.details[DETAILS[0]]).pack()
-
+        la = Label(root, text = self.details[DETAILS[0]]).pack()
+        #frame.pack_forget()
+        
+        askQue()
+        #frame.after(1000, lambda *args: frame.pack_forget())
+        # frame.pack_forget()
+        # butto_1 = Button(root, text = self.details[DETAILS[0]]).pack()
+   
+    # def unpackFrame(self, frame):
+    #     frame.pack_forget()
+    #     askQue()
 
 class Questions:
     def __init__(self, question_str, options):
         self.question_str = question_str
         self.options = options
+    
+
+    def get_frame(self, root):
+        frame = Frame(root)
+        # idea - make 2 frames?
+        # view = Frame(frame)
+        Label(frame, text = self.question_str).pack()
+        #print(len(ques[index].options))
+        for opt in ques[index].options:
+            but = Button(frame, text = opt.details[DETAILS[index+1]], command = opt.inc_vote).pack()         
+            #but = Button(frame, text = opt.details[DETAILS[index+1]]).bind("<Button-1>", opt.inc_vote(frame))
+        # butt = Button(view, text = "Next", command = lambda *args: d(view)).pack()
+        return frame
+
+
+    # def unpackFrame(self, frame):
+    #     frame.pack_forget()
+    #     askQue()
+
+def askQue():
+    global q,frame, index, button
+    #if(len(ques) == index + 1):
+    if(index == 2):
+        la = Label(root, text = "The End").pack()
+        answer()
+        return
+    #button.pack_forget()
+    index += 1
+    ques[index].get_frame(root).pack()
+
+    # for i, q in enumerate(ques):
+    # frame = Frame(root)
+    # label = Label(frame, text = q.question_str)
+    # label.pack()
+    # for opt in q.options:
+    #     but = Button(frame, text = opt.details[DETAILS[i+1]], command = opt.inc_vote).pack()
+    # frame.pack()
+
+
+def answer():
+    votes = []
+    for i in city:
+        votes.append(i.vote)
+    x = max(votes)
+    i = votes.index(x)
+    Label(root, text = "Your Dream Destination is : " + city[i].details[DETAILS[0]]).pack()
 
 
 root = Tk()
@@ -53,23 +116,25 @@ q = ["Where would you rather visit?", "What would you rather eat?", "What would 
 ques = []
 ques.append(Questions(q[0], [city[0], city[2], city[4], city[9]]))
 ques.append(Questions(q[1], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]]))
-# ques.append(Questions(q[3], [city[0], city[2], city[5], city[9]]))
-# ques.append(Questions(q[4], [city[0].man_made, city[1].man_made, city[2].man_made, city[3].man_made, city[4].man_made, city[5].man_made, city[6].man_made, city[7].man_made, city[8].man_made, city[9].man_made] ))
-# ques.append(Questions(q[5], [city[0].activity, city[1].activity, city[2].activity, city[3].activity, city[4].activity, city[5].activity, city[6].activity, city[7].activity, city[8].activity, city[9].activity] )) 
-# ques.append(Questions(q[6], [city[0].climate, city[1].climate, city[2].climate, city[3].climate, city[4].climate, city[5].climate, city[6].climate, city[7].climate, city[8].climate, city[9].climate] ))
-# ques.append(Questions(q[7], [city[0].drink, city[1].drink, city[2].drink, city[3].drink, city[4].drink, city[5].drink, city[6].drink, city[7].drink, city[8].drink, city[9].drink] )) 
-for i, q in enumerate(ques):
-    frame = Frame(root)
-    label = Label(frame, text = q.question_str)
-    label.pack()
-    for opt in q.options:
-        but = Button(frame, text = opt.details[DETAILS[i+1]], command = opt.inc_vote).pack()
-    frame.pack()
+ques.append(Questions(q[3], [city[0], city[2], city[5], city[9]]))
+# ques.append(Questions(q[4], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
+# ques.append(Questions(q[5], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
+# ques.append(Questions(q[6], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
+# ques.append(Questions(q[7], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
+# for i, q in enumerate(ques):
+#     frame = Frame(root)
+#     label = Label(frame, text = q.question_str)
+#     label.pack()
+#     for opt in q.options:
+#         but = Button(frame, text = opt.details[DETAILS[i+1]], command = opt.inc_vote).pack()
+#     frame.pack()
+index = -1
+button = Button(root, text="Start", command=askQue).pack()
 
 # votes = []
 # for i in city:
 #     votes.append(i.vote)
 # x = max(votes)
 # i = votes.index(x)
-# # print(city[i].name)
+# print(city[i].details[DETAILS[0]])
 root.mainloop()
