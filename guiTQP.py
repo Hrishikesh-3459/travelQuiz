@@ -34,10 +34,10 @@ class Cities:
         self.vote = 0
 
     
-    def inc_vote(self):
+    def inc_vote(self, view):
         self.vote += 1
-        la = Label(root, text = self.details[DETAILS[0]]).pack()
-        #frame.pack_forget()
+        # la = Label(root, text = self.details[DETAILS[0]]).pack()
+        view.pack_forget()
         
         askQue()
         #frame.after(1000, lambda *args: frame.pack_forget())
@@ -56,13 +56,17 @@ class Questions:
 
     def get_frame(self, root):
         frame = Frame(root)
+        but = {}
         # idea - make 2 frames?
         # view = Frame(frame)
         Label(frame, text = self.question_str).pack()
         #print(len(ques[index].options))
-        for opt in ques[index].options:
-            but = Button(frame, text = opt.details[DETAILS[index+1]], command = opt.inc_vote).pack()         
-            #but = Button(frame, text = opt.details[DETAILS[index+1]]).bind("<Button-1>", opt.inc_vote(frame))
+        # for i, opt in enumerate(ques[index].options):
+        but1 = Button(frame, text = ques[index].options[0].details[DETAILS[index+1]], command = lambda *args: ques[index].options[0].inc_vote(frame)).pack()
+        but2 = Button(frame, text = ques[index].options[1].details[DETAILS[index+1]], command = lambda *args: ques[index].options[1].inc_vote(frame)).pack()
+        but3 = Button(frame, text = ques[index].options[2].details[DETAILS[index+1]], command = lambda *args: ques[index].options[2].inc_vote(frame)).pack()
+        but4 = Button(frame, text = ques[index].options[3].details[DETAILS[index+1]], command = lambda *args: ques[index].options[3].inc_vote(frame)).pack()
+        #     #but = Button(frame, text = opt.details[DETAILS[index+1]]).bind("<Button-1>", opt.inc_vote(frame))
         # butt = Button(view, text = "Next", command = lambda *args: d(view)).pack()
         return frame
 
@@ -74,11 +78,11 @@ class Questions:
 def askQue():
     global q,frame, index, button
     #if(len(ques) == index + 1):
-    if(len(q) == index + 1):
+    if(index == 2):
         la = Label(root, text = "The End").pack()
         answer()
         return
-    #button.pack_forget()
+    # button1.pack_forget()
     index += 1
     ques[index].get_frame(root).pack()
 
@@ -114,13 +118,13 @@ for i, row in enumerate(text):
 
 q = ["Where would you rather visit?", "What would you rather eat?", "What would you rather wear?", "What would you rather enjoy doing?","What would you rather like to see?","Which of these activities sound the most exciting?", "Which climate are you most comfortable with?", "What would you rather drink?"]
 ques = []
-ques.append(Questions(q[0], [city[0], city[2], city[4], city[9]]))
-ques.append(Questions(q[1], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]]))
-ques.append(Questions(q[3], [city[0], city[2], city[5], city[9]]))
-ques.append(Questions(q[4], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
-ques.append(Questions(q[5], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
-ques.append(Questions(q[6], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
-ques.append(Questions(q[7], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
+ques.append(Questions(q[0], [city[0], city[1], city[2], city[3]]))
+ques.append(Questions(q[1], [city[0], city[1], city[2], city[3]])) #, city[4], city[5], city[6], city[7], city[8], city[9]
+ques.append(Questions(q[2], [city[0], city[2], city[5], city[9]]))
+# ques.append(Questions(q[4], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
+# ques.append(Questions(q[5], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
+# ques.append(Questions(q[6], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
+# ques.append(Questions(q[7], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
 # for i, q in enumerate(ques):
 #     frame = Frame(root)
 #     label = Label(frame, text = q.question_str)
@@ -137,11 +141,4 @@ button = Button(root, text="Start", command=askQue).pack()
 # x = max(votes)
 # i = votes.index(x)
 # print(city[i].details[DETAILS[0]])
-scroll = Scrollbar(root) 
-scroll.pack( side = RIGHT, fill = Y )
-mylist = Listbox(root, yscrollcommand = scroll.set)
-for i in range(0,100):
-    mylist.insert(END, i)
-mylist.pack()
-scroll.config(command = mylist.yview)
 root.mainloop()
