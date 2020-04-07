@@ -17,7 +17,6 @@ def iv(df, key, val):
     df["votes"] = l
     return df
 
-
 k = 1
 for ques in q:
     print(ques)

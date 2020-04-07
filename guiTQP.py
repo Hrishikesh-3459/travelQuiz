@@ -41,7 +41,7 @@ class Questions:
     def get_frame(self, root):
         frame = Frame(root)
         Label(frame, text = self.question_str).pack()
-        print(len(ques[index].options))
+        
         if(len(ques[index].options) == 4):
             but1 = Button(frame, text = ques[index].options[0].details[DETAILS[index+1]], width=25, command = lambda *args: ques[index].options[0].inc_vote(frame)).pack()
             but2 = Button(frame, text = ques[index].options[1].details[DETAILS[index+1]], width=25, command = lambda *args: ques[index].options[1].inc_vote(frame)).pack()
@@ -88,15 +88,18 @@ def answer():
 
 
 root = Tk()
-
-filename = '/Users/hrishikesh/codeBase/travelQuiz/cities.csv'
-with open(filename) as f:
-    reader = csv.reader(f)
-    text = list(reader)
+ 
+filename = './cities.csv'
+try:
+    with open(filename) as f:
+        reader = csv.reader(f)
+        text = list(reader)
+except FileNotFoundError:
+    print("input csv file not found!")
 
 city = []
 for i, row in enumerate(text):
-    city.append(Cities(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9] ))
+    city.append(Cities(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9] )) 
 
 q = ["Where would you rather visit?", "What would you rather eat?", "Pick a word to describe your ideal vacation?", "What would you like to see?", "What would you rather wear?", "What would you rather drink?", "Pick your favourite season to travel", "Pick an activity"]
 ques = []
@@ -107,7 +110,7 @@ ques.append(Questions(q[3], [city[0], city[1], city[2], city[3], city[4], city[5
 ques.append(Questions(q[4], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
 ques.append(Questions(q[5], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
 ques.append(Questions(q[6], [city[4], city[8], city[2], city[5]]))
-ques.append(Questions(q[7], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] )) 
+ques.append(Questions(q[7], [city[0], city[1], city[2], city[3], city[4], city[5], city[6], city[7], city[8], city[9]] ))
 
 index = -1
 button = Button(root, text="Start", width = 25 , height = "3", fg = "green", command= askQue)
@@ -115,5 +118,5 @@ button.pack()
   
 
 root.title('GUI Travel Quiz')
-root.geometry('400x400') 
+root.geometry('500x500') 
 root.mainloop()
