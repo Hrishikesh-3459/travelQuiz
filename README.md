@@ -7,5 +7,7 @@ Steps:
 4. If you find an error saying that the file 'cities' wasn't found, please copy the on device location of the file 'cities' paste it in line number 92.
 
 Thanks for playing!
-Regards: /n
+
+Regards: 
+
 Hrishikesh Mulkutkar
