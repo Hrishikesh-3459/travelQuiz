@@ -1,55 +1,0 @@
-	•	Where would you rather visit  
-	1.	Beach  
-	2.	Mountains  
-	3.	City  
-	4.	Heritage  
-	•	What would you rather eat?  
-	1.	Dumplings  
-	2.	FIsh  
-	3.	English Breakfast  
-	4.	Dal-Bhati  
-	5.	Kebab  
-	6.	Parantha  
-	7.	Burgers  
-	8.	Vadapav  
-	9.	Chocolate  
-	10.	Momos  
-	•	What would you rather wear?  
-	1.	Cheongsam 
-	2.	Saree  
-	3.	Suit  
-	4.	Kurti  
-	5.	Shalwar Kameez 
-	6.	Thawb  
-	7.	Casual  
-	•	What would you rather enjoy doing?  
-	1.	Shop  
-	2.	Party  
-	3.	Explore  
-	4.	Relax  
-	•	What would you rather like to see?  
-	1.	The Basilica of Bom Jesus 
-	2.	Disneyland 
-	3.	Big ben  
-	4.	Hawa Mahal  
-	5.	India gate  
-	6.	Burj Khalifa  
-	7.	Bellagio Casino 
-	8.	Gateway of India  
-	9.	Jungfraujoch 
-	10.	Singalila National Park 
-	•	Which of these activities sound the most exciting?  
-	1.	Amusement Park  
-	2.	Water Sports  
-	3.	Snow Sports  
-	4.	Gamble  
-	•	Which climate are you most comfortable with?  
-	1.	Cold  
-	2.	Hot  
-	3.	Monsoon  
-	4.	Climate  
-	•	What would you rather drink?  
-	1.	Tea  
-	2.	Coffee  
-	3.	Alcohol  
-	4.	Milkshake   
