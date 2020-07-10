@@ -20,7 +20,7 @@ python3 guiTQP.py
 
 The usage is pretty straightforward, you just have to answer the question that pop up on your screen.
 
-## Note - Make sure that cities.csv is in the same folder as guiTQP.py
+#### Note - Make sure that cities.csv is in the same folder as guiTQP.py
 
 ## Screenshots
 
